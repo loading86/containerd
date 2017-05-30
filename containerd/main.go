@@ -26,6 +26,9 @@ import (
 	"github.com/docker/containerd/supervisor"
 	"github.com/docker/docker/pkg/listeners"
 	"github.com/rcrowley/go-metrics"
+	"src/github.com/rcrowley/go-metrics"
+	"src/github.com/cyberdelia/go-metrics-graphite"
+	"src/golang.org/x/net/context"
 )
 
 const (
@@ -118,6 +121,10 @@ func setupDumpStacksTrap() {
 
 func main() {
 	logrus.SetFormatter(&logrus.TextFormatter{TimestampFormat: time.RFC3339Nano})
+	file, err := os.OpenFile("logrus.log", os.O_CREATE|os.O_WRONLY, 0666)
+	if err == nil{
+		logrus.SetOutput(file)
+	}
 	app := cli.NewApp()
 	app.Name = "containerd"
 	if containerd.GitCommit != "" {
@@ -145,7 +152,7 @@ func main() {
 		}
 		return nil
 	}
-
+	logrus.Info("WUJQ containerd start!\n")
 	app.Action = func(context *cli.Context) {
 		if err := daemon(context); err != nil {
 			logrus.Fatal(err)
