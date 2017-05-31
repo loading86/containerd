@@ -26,6 +26,8 @@ import (
 	"github.com/docker/containerd/supervisor"
 	"github.com/docker/docker/pkg/listeners"
 	"github.com/rcrowley/go-metrics"
+	"src/github.com/rcrowley/go-metrics"
+	"src/github.com/cyberdelia/go-metrics-graphite"
 )
 
 const (
@@ -151,6 +153,9 @@ func main() {
 	}
 	logrus.Info("WUJQ containerd start!\n")
 	app.Action = func(context *cli.Context) {
+		logrus.Info("----context:%+v", *context)
+		//logrus.Info("----context flagSet:%+v", *(context.flagSet))
+		logrus.Info("----app:%+v", *app)
 		if err := daemon(context); err != nil {
 			logrus.Fatal(err)
 		}
