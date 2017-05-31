@@ -26,8 +26,6 @@ import (
 	"github.com/docker/containerd/supervisor"
 	"github.com/docker/docker/pkg/listeners"
 	"github.com/rcrowley/go-metrics"
-	"src/github.com/rcrowley/go-metrics"
-	"src/github.com/cyberdelia/go-metrics-graphite"
 )
 
 const (
