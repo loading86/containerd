@@ -151,9 +151,9 @@ func main() {
 	}
 	logrus.Info("WUJQ containerd start!\n")
 	app.Action = func(context *cli.Context) {
-		logrus.Info("----context:%+v", *context)
+		logrus.Infof("----context:%+v", *context)
 		//logrus.Info("----context flagSet:%+v", *(context.flagSet))
-		logrus.Info("----app:%+v", *app)
+		logrus.Infof("----app:%+v", *app)
 		if err := daemon(context); err != nil {
 			logrus.Fatal(err)
 		}
