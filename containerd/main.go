@@ -158,6 +158,7 @@ func main() {
 			logrus.Fatal(err)
 		}
 	}
+	logrus.Info("WUJQ before app.Run2!\n")
 	if err := app.Run(os.Args); err != nil {
 		logrus.Fatal(err)
 	}
