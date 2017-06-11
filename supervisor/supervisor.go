@@ -19,6 +19,12 @@ const (
 
 // New returns an initialized Process supervisor.
 func New(stateDir string, runtimeName, shimName string, runtimeArgs []string, timeout time.Duration, retainCount int) (*Supervisor, error) {
+	logrus.Infof("supervisor new stateDir:%+v\n", stateDir)
+	logrus.Infof("supervisor new runtimeName:%+v\n", runtimeName)
+	logrus.Infof("supervisor new shimName:%+v\n", shimName)
+	logrus.Infof("supervisor new runtimeArgs:%+v\n", runtimeArgs)
+	logrus.Infof("supervisor new timeout:%+v\n", timeout)
+	logrus.Infof("supervisor new retainCount:%+v\n", retainCount)
 	startTasks := make(chan *startTask, 10)
 	if err := os.MkdirAll(stateDir, 0755); err != nil {
 		return nil, err
